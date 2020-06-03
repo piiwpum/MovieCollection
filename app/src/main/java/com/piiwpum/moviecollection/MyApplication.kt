@@ -1,8 +1,10 @@
 package com.piiwpum.moviecollection
 
 import android.app.Application
+import com.piiwpum.moviecollection.di.appModule
 import com.piiwpum.moviecollection.di.networkModule
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class MyApplication : Application() {
@@ -10,7 +12,9 @@ class MyApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@MyApplication)
-            modules(networkModule)
+            androidLogger()
+
+            modules(networkModule , appModule)
         }
     }
 }
